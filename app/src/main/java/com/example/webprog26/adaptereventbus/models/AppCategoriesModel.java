@@ -30,6 +30,11 @@ public class AppCategoriesModel {
     }
 
     public void setEducational(boolean educational) {
+        if(educational){
+            setNeutral(false);
+            setForFun(false);
+            setBlocked(false);
+        }
         isEducational = educational;
     }
 
@@ -38,6 +43,11 @@ public class AppCategoriesModel {
     }
 
     public void setForFun(boolean forFun) {
+        if(forFun){
+            setNeutral(false);
+            setEducational(false);
+            setBlocked(false);
+        }
         isForFun = forFun;
     }
 
@@ -46,6 +56,11 @@ public class AppCategoriesModel {
     }
 
     public void setBlocked(boolean blocked) {
+        if(blocked){
+            setNeutral(false);
+            setForFun(false);
+            setEducational(false);
+        }
         isBlocked = blocked;
     }
 }

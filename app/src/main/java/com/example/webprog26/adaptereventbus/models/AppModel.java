@@ -10,7 +10,6 @@ public class AppModel {
 
     private String mAppLabel;
     private Bitmap mAppIcon;
-    private boolean hasCategory = false;
     private AppCategoriesModel mAppCategoriesModel;
 
     public AppModel() {
@@ -34,17 +33,6 @@ public class AppModel {
         this.mAppIcon = mAppIcon;
     }
 
-    public boolean isHasCategory() {
-        if(mAppCategoriesModel.isNeutral()){
-            mAppCategoriesModel.setNeutral(false);
-        }
-        return hasCategory;
-    }
-
-    public void setHasCategory(boolean hasCategory) {
-        this.hasCategory = hasCategory;
-    }
-
     public AppCategoriesModel getAppCategoriesModel() {
         return mAppCategoriesModel;
     }
@@ -56,7 +44,6 @@ public class AppModel {
     @Override
     public String toString() {
         return "App \"" + getAppLabel() + "\" with icon " + getAppIcon() + "\n"
-                + "hasCategory  " + isHasCategory() + "\n"
                 + "neutral " + mAppCategoriesModel.isNeutral() + "\n"
                 + "educational " + mAppCategoriesModel.isEducational() + "\n"
                 + "for fun " + mAppCategoriesModel.isForFun() + "\n"
