@@ -3,6 +3,7 @@ package com.example.webprog26.adaptereventbus.adapters;
 import android.content.Context;
 import android.support.v7.widget.AppCompatRadioButton;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,9 +56,11 @@ public class AppsListAdapter extends RecyclerView.Adapter<AppsListAdapter.AppsLi
         holder.mRbForFun.setChecked(appCategoriesModel.isForFun());
         holder.mRbBlocked.setChecked(appCategoriesModel.isBlocked());
 
-        OnRadioButtonClickListener clickListener = new OnRadioButtonClickListener(appModel, position, mContextWeakReference.get(), holder.mTvAppCategory);
+        TextView appCategoryTextView = holder.mTvAppCategory;
 
-        new AppCategoryManager(mContextWeakReference.get()).setAppCategory(appCategoriesModel, holder.mTvAppCategory);
+        OnRadioButtonClickListener clickListener = new OnRadioButtonClickListener(appModel, position, mContextWeakReference.get(), appCategoryTextView);
+
+        new AppCategoryManager(mContextWeakReference.get()).setAppCategory(appCategoriesModel, appCategoryTextView);
 
         holder.mRbEducational.setOnClickListener(clickListener);
         holder.mRbForFun.setOnClickListener(clickListener);

@@ -12,6 +12,11 @@ import com.example.webprog26.adaptereventbus.db.DbHelper;
 import com.example.webprog26.adaptereventbus.managers.DrawableToBitmapConverter;
 import com.example.webprog26.adaptereventbus.models.AppCategoriesModel;
 import com.example.webprog26.adaptereventbus.models.AppModel;
+import com.example.webprog26.adaptereventbus.models.AppsCategoriesCounter;
+import com.example.webprog26.adaptereventbus.models.events.AppsCountRecalculateEvent;
+
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -119,10 +124,12 @@ public class MyAppsProvider {
             String[] whereArgs = new String[]{model.getAppLabel()};
 
             mDbHelper.getWritableDatabase().update(DbHelper.TABLE_NAME, contentValues, whereClause, whereArgs);
+            EventBus.getDefault().post(new AppsCountRecalculateEvent(getAppsCategoriesCounter()));
             return;
         }
         contentValues.put(DbHelper.APP_NAME, model.getAppLabel());
         mDbHelper.getWritableDatabase().insert(DbHelper.TABLE_NAME, null, contentValues);
+        EventBus.getDefault().post(new AppsCountRecalculateEvent(getAppsCategoriesCounter()));
     }
 
     public void deleteAppFromDatabase(AppModel appModel){
@@ -130,5 +137,61 @@ public class MyAppsProvider {
         String[] whereArgs = new String[]{appModel.getAppLabel()};
 
         mDbHelper.getWritableDatabase().delete(DbHelper.TABLE_NAME, whereClause, whereArgs);
+        EventBus.getDefault().post(new AppsCountRecalculateEvent(getAppsCategoriesCounter()));
+    }
+
+    private int getEducationalCount(){
+        int count = 0;
+
+        String whereClause = DbHelper.IS_EDUCATIONAL + " = ?";
+        String[] whereArgs = new String[]{String.valueOf(true)};
+
+        Cursor cursor = mDbHelper.getReadableDatabase().query(DbHelper.TABLE_NAME, null, whereClause, whereArgs, null, null, null);
+
+        while(cursor.moveToNext()){
+            count++;
+        }
+
+        return count;
+    }
+
+    private int getForFunCount(){
+        int count = 0;
+
+        String whereClause = DbHelper.IS_FOR_FUN + " = ?";
+        String[] whereArgs = new String[]{String.valueOf(true)};
+
+        Cursor cursor = mDbHelper.getReadableDatabase().query(DbHelper.TABLE_NAME, null, whereClause, whereArgs, null, null, null);
+
+        while(cursor.moveToNext()){
+            count++;
+        }
+
+        return count;
+    }
+
+    private int getBlockedCount(){
+        int count = 0;
+
+        String whereClause = DbHelper.IS_BLOCKED + " = ?";
+        String[] whereArgs = new String[]{String.valueOf(true)};
+
+        Cursor cursor = mDbHelper.getReadableDatabase().query(DbHelper.TABLE_NAME, null, whereClause, whereArgs, null, null, null);
+
+        while(cursor.moveToNext()){
+            count++;
+        }
+
+        return count;
+    }
+
+    public AppsCategoriesCounter getAppsCategoriesCounter(){
+        AppsCategoriesCounter categoriesCounter = new AppsCategoriesCounter();
+
+        categoriesCounter.setEducationalCount(getEducationalCount());
+        categoriesCounter.setForFunCount(getForFunCount());
+        categoriesCounter.setBlockedCount(getBlockedCount());
+
+        return categoriesCounter;
     }
 }

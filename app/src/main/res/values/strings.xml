@@ -5,4 +5,9 @@
     <string name="category_education">education</string>
     <string name="category_fun">fun</string>
     <string name="category_blocked">blocked</string>
+
+    <string name="total_count">%1$d applications</string>
+    <string name="educational_count">%1$d educational</string>
+    <string name="blocked_count">%1$d blocked</string>
+    <string name="for_fun_count">%1$d for fun</string>
 </resources>
