@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout
+    android:layout_height="wrap_content">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:orientation="horizontal">
         <ImageView
             android:layout_width="@dimen/app_icon_width"
             android:layout_height="@dimen/app_icon_height"
             android:id="@+id/ivAppIcon"
-            android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvAppLabel"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_toRightOf="@+id/ivAppIcon"
-            android:layout_centerVertical="true"
-            android:gravity="right"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvAppCategory"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/colorPrimaryDark"
-            android:layout_toLeftOf="@+id/buttonsContainer"
-            android:layout_centerVertical="true" />
+            android:layout_gravity="center_vertical"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_weight="3"
+            android:layout_gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/tvAppLabel"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
+                android:textColor="@color/colorPrimaryDark"
+                android:gravity="start"
+                android:scrollHorizontally="true"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/tvAppCategory"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_gravity="end"
+                android:textAlignment="viewEnd"
+                android:layout_marginRight="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="horizontal"
             android:id="@+id/buttonsContainer"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp">
+            android:layout_gravity="center_vertical">
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -54,5 +64,5 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rbBlocked"/>
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </android.support.v7.widget.CardView>
