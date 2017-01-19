@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AdapterEventBus</string>
 
+    <string name="page_title">Parent\'s page</string>
+
     <string name="category_neutral">neutral</string>
     <string name="category_education">education</string>
     <string name="category_fun">fun</string>

@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setTitle(getResources().getString(R.string.page_title));
+
         mMyAppsProvider = new MyAppsProvider(getApplicationContext());
 
         mPbLoadingInProgress = (ProgressBar) findViewById(R.id.pbLoadingInProgress);

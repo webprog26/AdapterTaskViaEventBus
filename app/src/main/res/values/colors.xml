@@ -10,4 +10,6 @@
     <color name="colorRbEducational">#59E396</color>
     <color name="colorRbForFun">#E06361</color>
     <color name="colorRbBlocked">#3D3D3D</color>
+    <color name="colorActionBarBackground">@android:color/black</color>
+    <color name="colorActionBarText">@android:color/white</color>
 </resources>
