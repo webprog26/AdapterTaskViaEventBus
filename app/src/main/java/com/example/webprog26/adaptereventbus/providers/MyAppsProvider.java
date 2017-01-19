@@ -7,16 +7,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.util.Log;
-
 import com.example.webprog26.adaptereventbus.db.DbHelper;
 import com.example.webprog26.adaptereventbus.managers.DrawableToBitmapConverter;
 import com.example.webprog26.adaptereventbus.models.AppCategoriesModel;
 import com.example.webprog26.adaptereventbus.models.AppModel;
 import com.example.webprog26.adaptereventbus.models.AppsCategoriesCounter;
 import com.example.webprog26.adaptereventbus.models.events.AppsCountRecalculateEvent;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

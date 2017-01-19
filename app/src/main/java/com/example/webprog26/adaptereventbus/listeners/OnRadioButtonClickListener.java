@@ -2,18 +2,14 @@ package com.example.webprog26.adaptereventbus.listeners;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatRadioButton;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import com.example.webprog26.adaptereventbus.R;
 import com.example.webprog26.adaptereventbus.managers.AppCategoryManager;
 import com.example.webprog26.adaptereventbus.models.AppCategoriesModel;
 import com.example.webprog26.adaptereventbus.models.AppModel;
 import com.example.webprog26.adaptereventbus.models.events.AppCategoryChangedEvent;
-
 import org.greenrobot.eventbus.EventBus;
-
 import java.lang.ref.WeakReference;
 
 /**

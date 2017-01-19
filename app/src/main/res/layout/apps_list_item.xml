@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvAppLabel"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small.Inverse"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorAppLabel"
                 android:gravity="start"
                 android:scrollHorizontally="true"
                 android:maxLines="1"
@@ -39,7 +39,7 @@
                 android:layout_weight="1"
                 android:id="@+id/tvAppCategory"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/colorAppLabel"
                 android:layout_gravity="end"
                 android:textAlignment="viewEnd"
                 android:layout_marginRight="10dp"/>

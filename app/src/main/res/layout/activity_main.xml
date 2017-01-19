@@ -17,7 +17,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@color/colorCountersLayoutBackground">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +29,7 @@
             android:text="@string/total_count"
             android:background="@drawable/total_apps_count_bg"
             android:textColor="@android:color/white"
-            android:textSize="8dp"
+            android:textSize="10dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="8dp"/>
         <TextView
@@ -34,8 +38,8 @@
             android:id="@+id/tvEducationalAppsCount"
             android:text="@string/educational_count"
             android:background="@drawable/category_apps_count_bg"
-            android:textColor="@android:color/black"
-            android:textSize="8dp"
+            android:textColor="@color/colorAppCategoryTitle"
+            android:textSize="10dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="8dp"/>
         <TextView
@@ -44,8 +48,8 @@
             android:id="@+id/tvBlockedlAppsCount"
             android:text="@string/blocked_count"
             android:background="@drawable/category_apps_count_bg"
-            android:textColor="@android:color/black"
-            android:textSize="8dp"
+            android:textColor="@color/colorAppCategoryTitle"
+            android:textSize="10dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="8dp"/>
         <TextView
@@ -54,8 +58,8 @@
             android:id="@+id/tvForFunAppsCount"
             android:text="@string/for_fun_count"
             android:background="@drawable/category_apps_count_bg"
-            android:textColor="@android:color/black"
-            android:textSize="8dp"
+            android:textColor="@color/colorAppCategoryTitle"
+            android:textSize="10dp"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
