@@ -33,6 +33,12 @@ public class MyAppsProvider {
         this.mDbHelper = new DbHelper(context);
     }
 
+    /**
+     * Returns {@link List} of {@link AppModel} contains icons and labels
+     * of all the applications installed on the device
+     * @param packageManager {@link PackageManager}
+     * @return List<AppModel>
+     */
     public List<AppModel> getAppModelList(PackageManager packageManager){
         List<AppModel> appModels = new ArrayList<>();
         for(ResolveInfo resolveInfo: getLauncherActivitiesList(packageManager)){
@@ -51,6 +57,12 @@ public class MyAppsProvider {
         return appModels;
     }
 
+    /**
+     * Returns {@link List} of {@link ResolveInfo}
+     * with information about all the applications installed on the device
+     * @param packageManager {@link PackageManager}
+     * @return List<ResolveInfo>
+     */
     private List<ResolveInfo> getLauncherActivitiesList(final PackageManager packageManager){
         Intent getAppsIntent = new Intent(Intent.ACTION_MAIN);
         getAppsIntent.addCategory(Intent.CATEGORY_LAUNCHER);
@@ -71,6 +83,11 @@ public class MyAppsProvider {
         return activities;
     }
 
+    /**
+     * Checks if app is already saved in the local database on the device
+     * @param appLabel {@link String}
+     * @return boolean
+     */
     private boolean isMatching(String appLabel){
         String whereClause = DbHelper.APP_NAME + " = ?";
         String[] whereArgs = new String[]{appLabel};
@@ -86,6 +103,11 @@ public class MyAppsProvider {
         return id != 0;
     }
 
+    /**
+     * Returns {@link AppCategoriesModel} instance filled  with data for specific {@link AppModel} from database
+     * @param appLabel {@link String}
+     * @return AppCategoriesModel
+     */
     public AppCategoriesModel getAppCategoriesModel(String appLabel){
 
         AppCategoriesModel appCategoriesModel = new AppCategoriesModel();
@@ -104,6 +126,10 @@ public class MyAppsProvider {
         return appCategoriesModel;
     }
 
+    /**
+     * Inserts new {@link AppModel} to database or updates existing one
+     * @param model {@link AppModel}
+     */
     public void saveAppCategory(AppModel model){
         AppCategoriesModel appCategoriesModel = model.getAppCategoriesModel();
 
@@ -125,6 +151,10 @@ public class MyAppsProvider {
         EventBus.getDefault().post(new AppsCountRecalculateEvent(getAppsCategoriesCounter()));
     }
 
+    /**
+     * Deletes application info from database if category set to neutral. This could be useful to avoid growing of database
+     * @param appModel {@link AppModel}
+     */
     public void deleteAppFromDatabase(AppModel appModel){
         String whereClause = DbHelper.APP_NAME + " = ?";
         String[] whereArgs = new String[]{appModel.getAppLabel()};
@@ -133,6 +163,10 @@ public class MyAppsProvider {
         EventBus.getDefault().post(new AppsCountRecalculateEvent(getAppsCategoriesCounter()));
     }
 
+    /**
+     * Returns number of apps whom category has been set to education
+     * @return int
+     */
     private int getEducationalCount(){
         int count = 0;
 
@@ -148,6 +182,10 @@ public class MyAppsProvider {
         return count;
     }
 
+    /**
+     * Returns number of apps whom category has been set to fun
+     * @return int
+     */
     private int getForFunCount(){
         int count = 0;
 
@@ -163,6 +201,10 @@ public class MyAppsProvider {
         return count;
     }
 
+    /**
+     * Returns number of apps whom category has been set to blocked
+     * @return int
+     */
     private int getBlockedCount(){
         int count = 0;
 
@@ -178,6 +220,10 @@ public class MyAppsProvider {
         return count;
     }
 
+    /**
+     * Returns AppCategoriesModel instance filled with data about apps counted by category
+     * @return AppCategoriesModel
+     */
     public AppsCategoriesCounter getAppsCategoriesCounter(){
         AppsCategoriesCounter categoriesCounter = new AppsCategoriesCounter();
 

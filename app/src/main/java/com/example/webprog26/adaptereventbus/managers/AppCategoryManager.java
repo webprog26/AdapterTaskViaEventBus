@@ -22,6 +22,11 @@ public class AppCategoryManager {
         mContextWeakReference = new WeakReference<Context>(context);
     }
 
+    /**
+     * Changes category title and it's color accordingly to the user choice
+     * @param appCategoriesModel {@link AppCategoriesModel}
+     * @param appCategoryTextView {@link TextView}
+     */
     public void setAppCategory(AppCategoriesModel appCategoriesModel, TextView appCategoryTextView){
         if(appCategoriesModel.isNeutral()){
             appCategoryTextView.setText(mContextWeakReference.get().getResources().getString(R.string.category_neutral));

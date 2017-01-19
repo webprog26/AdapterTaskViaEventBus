@@ -42,7 +42,7 @@ public class OnRadioButtonClickListener implements View.OnClickListener {
             case R.id.rbEducational:
                 if(mAppCategoriesModel.isEducational()){
                     mAppCategoriesModel.setNeutral(true);
-                    ((AppCompatRadioButton) v).setChecked(false);
+                    radioButton.setChecked(false);
                     break;
                 }
                 mAppCategoriesModel.setEducational(true);
@@ -50,7 +50,7 @@ public class OnRadioButtonClickListener implements View.OnClickListener {
             case R.id.rbForFun:
                 if(mAppCategoriesModel.isForFun()){
                     mAppCategoriesModel.setNeutral(true);
-                    ((AppCompatRadioButton) v).setChecked(false);
+                    radioButton.setChecked(false);
                     break;
                 }
                 mAppCategoriesModel.setForFun(true);
@@ -58,7 +58,7 @@ public class OnRadioButtonClickListener implements View.OnClickListener {
             case R.id.rbBlocked:
                 if(mAppCategoriesModel.isBlocked()){
                     mAppCategoriesModel.setNeutral(true);
-                    ((AppCompatRadioButton) v).setChecked(false);
+                    radioButton.setChecked(false);
                     break;
                 }
                 mAppCategoriesModel.setBlocked(true);

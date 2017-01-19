@@ -68,15 +68,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //Registering EventBus instance
         EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        //Sending request for list of AppModel
         EventBus.getDefault().post(new RetrieveAppsListEvent(getPackageManager()));
     }
 
+    /**
+     * Retrieving list of AppModel from {@link MyAppsProvider} asynchronously
+     * @param retrieveAppsListEvent {@link RetrieveAppsListEvent}
+     */
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void onRetrieveAppsListEvent(RetrieveAppsListEvent retrieveAppsListEvent){
         Log.i(TAG, "onRetrieveAppsListEvent");
@@ -106,12 +112,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * App category has been updated, we may ask {@link AppsListAdapter} to
+     * update specific row by giving him this row's position, included in {@link AppCategoryChangedEvent}
+     * @param appCategoryChangedEvent {@link AppCategoryChangedEvent}
+     */
     @Subscribe
     public void onAppCategoryChangedEvent(AppCategoryChangedEvent appCategoryChangedEvent){
         EventBus.getDefault().post(new SaveAppToDatabaseEvent(appCategoryChangedEvent.getAppModel()));
         mAdapter.updateList(appCategoryChangedEvent.getPosition());
     }
 
+    /**
+     * App category has been updated, we should ask {@link MyAppsProvider} to save it it the database
+     * or update existing one asynchronously
+     * @param saveAppToDatabaseEvent {@link SaveAppToDatabaseEvent}
+     */
     @Subscribe(threadMode = ThreadMode.ASYNC)
     public void onSaveAppToDatabaseEvent(SaveAppToDatabaseEvent saveAppToDatabaseEvent){
         if(saveAppToDatabaseEvent.getAppModel().getAppCategoriesModel().isNeutral()){
@@ -121,6 +137,11 @@ public class MainActivity extends AppCompatActivity {
         mMyAppsProvider.saveAppCategory(saveAppToDatabaseEvent.getAppModel());
     }
 
+    /**
+     * Apps count by categories has been changed, so we must update UI with the new numbers
+     * included in {@link AppsCountRecalculateEvent}
+     * @param appsCountRecalculateEvent
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onAppsCountRecalculateEvent(AppsCountRecalculateEvent appsCountRecalculateEvent){
         AppsCategoriesCounter counter = appsCountRecalculateEvent.getAppsCategoriesCounter();
@@ -131,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        //Unregistering EventBus instance
         EventBus.getDefault().unregister(this);
         super.onStop();
     }

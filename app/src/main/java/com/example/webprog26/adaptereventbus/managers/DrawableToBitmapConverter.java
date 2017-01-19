@@ -11,6 +11,11 @@ import android.graphics.drawable.Drawable;
 
 public class DrawableToBitmapConverter {
 
+    /**
+     * Converts given {@link Drawable} to {@link Bitmap}
+     * @param drawable {@link Drawable}
+     * @return {@link Bitmap}
+     */
     public static Bitmap drawableToBitmap (Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable)drawable).getBitmap();

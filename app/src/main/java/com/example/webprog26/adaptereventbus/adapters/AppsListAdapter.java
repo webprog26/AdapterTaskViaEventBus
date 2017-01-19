@@ -89,6 +89,10 @@ public class AppsListAdapter extends RecyclerView.Adapter<AppsListAdapter.AppsLi
         }
     }
 
+    /**
+     * Updates single row in list
+     * @param appPosition int
+     */
     public void updateList(int appPosition){
         notifyItemChanged(appPosition);
     }
