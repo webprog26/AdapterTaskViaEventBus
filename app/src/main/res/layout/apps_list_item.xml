@@ -13,7 +13,7 @@
             android:layout_width="@dimen/app_icon_width"
             android:layout_height="@dimen/app_icon_height"
             android:id="@+id/ivAppIcon"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/app_icon_margin_right"
             android:layout_gravity="center_vertical"/>
         <LinearLayout
             android:layout_width="0dp"
@@ -42,27 +42,34 @@
                 android:textColor="@color/colorAppLabel"
                 android:layout_gravity="end"
                 android:textAlignment="viewEnd"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="@dimen/app_category_margin_right"/>
         </LinearLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="horizontal"
             android:id="@+id/buttonsContainer"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginLeft="@dimen/app_item_margin">
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbEducational"/>
+                android:id="@+id/rbEducational"
+                android:button="@drawable/rb_educational_selector"
+                android:layout_alignParentLeft="true"/>
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbForFun"/>
+                android:id="@+id/rbForFun"
+                android:button="@drawable/rb_for_fun_selector"
+                android:layout_centerInParent="true"/>
             <android.support.v7.widget.AppCompatRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbBlocked"/>
-        </LinearLayout>
+                android:id="@+id/rbBlocked"
+                android:button="@drawable/rb_blocked_selector"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

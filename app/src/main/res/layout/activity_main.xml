@@ -18,48 +18,44 @@
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:visibility="gone"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/counters_layout_padding"
+        android:paddingTop="@dimen/counters_layout_padding"
+        android:paddingBottom="@dimen/counters_layout_padding"
         android:background="@color/colorCountersLayoutBackground">
         <TextView
+            android:id="@+id/tvTotalAppsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvTotalAppsCount"
-            android:text="@string/total_count"
             android:background="@drawable/total_apps_count_bg"
             android:textColor="@android:color/white"
-            android:textSize="10dp"
+            android:textSize="@dimen/counters_text_size"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="@dimen/counters_margin_right"/>
         <TextView
+            android:id="@+id/tvEducationalAppsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvEducationalAppsCount"
-            android:text="@string/educational_count"
             android:background="@drawable/category_apps_count_bg"
             android:textColor="@color/colorAppCategoryTitle"
-            android:textSize="10dp"
+            android:textSize="@dimen/counters_text_size"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="@dimen/counters_margin_right"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tvBlockedlAppsCount"
-            android:text="@string/blocked_count"
             android:background="@drawable/category_apps_count_bg"
             android:textColor="@color/colorAppCategoryTitle"
-            android:textSize="10dp"
+            android:textSize="@dimen/counters_text_size"
             android:layout_gravity="center_vertical"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="@dimen/counters_margin_right"/>
         <TextView
+            android:id="@+id/tvForFunAppsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvForFunAppsCount"
-            android:text="@string/for_fun_count"
             android:background="@drawable/category_apps_count_bg"
             android:textColor="@color/colorAppCategoryTitle"
-            android:textSize="10dp"
+            android:textSize="@dimen/counters_text_size"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView

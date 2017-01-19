@@ -5,5 +5,13 @@
 
     <dimen name="app_icon_width">40dp</dimen>
     <dimen name="app_icon_height">40dp</dimen>
-    <dimen name="app_item_margin">10dp</dimen>
+    <dimen name="app_item_margin">8dp</dimen>
+    <dimen name="rb_margin_right">10dp</dimen>
+    <dimen name="app_icon_margin_right">10dp</dimen>
+    <dimen name="app_category_margin_right">10dp</dimen>
+
+    <dimen name="counters_layout_padding">10dp</dimen>
+    <dimen name="counters_margin_right">8dp</dimen>
+
+    <dimen name="counters_text_size">10sp</dimen>
 </resources>

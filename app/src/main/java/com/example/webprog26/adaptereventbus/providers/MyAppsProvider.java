@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.database.Cursor;
-import android.util.Log;
+
 import com.example.webprog26.adaptereventbus.db.DbHelper;
 import com.example.webprog26.adaptereventbus.managers.DrawableToBitmapConverter;
 import com.example.webprog26.adaptereventbus.models.AppCategoriesModel;
@@ -27,16 +27,13 @@ public class MyAppsProvider {
 
     private static final String TAG = "MyAppsProvider";
 
-    private Context mContext;
     private DbHelper mDbHelper;
 
     public MyAppsProvider(Context context) {
-        this.mContext = context;
         this.mDbHelper = new DbHelper(context);
     }
 
     public List<AppModel> getAppModelList(PackageManager packageManager){
-        Log.i("MainActivity_TAG", "thread " + Thread.currentThread().getName());
         List<AppModel> appModels = new ArrayList<>();
         for(ResolveInfo resolveInfo: getLauncherActivitiesList(packageManager)){
             String appLabel = resolveInfo.loadLabel(packageManager).toString();
@@ -108,7 +105,6 @@ public class MyAppsProvider {
     }
 
     public void saveAppCategory(AppModel model){
-        Log.i(TAG, "saving to db " + model.toString());
         AppCategoriesModel appCategoriesModel = model.getAppCategoriesModel();
 
         ContentValues contentValues = new ContentValues();
